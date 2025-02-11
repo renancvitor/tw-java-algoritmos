@@ -26,6 +26,7 @@ public class Main {
         for (int i = 0; i < numeros.length; i++) {
             if (numeros[i] == alvo) {
                 posicaoResultado = i;
+                break;
             }
         }
         if (posicaoResultado == -1) {
