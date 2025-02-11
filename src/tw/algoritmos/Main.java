@@ -19,10 +19,29 @@ public class Main {
             numeros[i] = numero;
         }
 
+        System.out.println("**Busca linear**");
+        System.out.print("Digite o número a ser digitado: ");
+        int alvo = scanner.nextInt();
+        int posicaoResultado = -1;
         for (int i = 0; i < numeros.length; i++) {
-            System.out.println(numeros[i]);
+            if (numeros[i] == alvo) {
+                posicaoResultado = i;
+            }
         }
+        if (posicaoResultado == -1) {
+            System.out.println("Elemento não foi encontrado.");
+        } else {
+            System.out.println(String.format("O número %d foi encontrado na posição %d", alvo, posicaoResultado));
+        }
+        System.out.println("Vetor: ");
+        imprimirArray(numeros);
 
         scanner.close();
+    }
+
+    private static void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
