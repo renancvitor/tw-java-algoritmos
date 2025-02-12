@@ -29,12 +29,26 @@ public class Main {
                 break;
             }
         }
-        if (posicaoResultado == -1) {
+        if (posicaoResultado < 0) {
             System.out.println("Elemento não foi encontrado.");
         } else {
             System.out.println(String.format("O número %d foi encontrado na posição %d", alvo, posicaoResultado));
         }
         System.out.println("Vetor: ");
+        imprimirArray(numeros);
+
+        for (int i = 0; i < numeros.length; i++) {
+            int indiceMenor = i;
+            for (int j = i + 1; j < numeros.length; j++) {
+                if (numeros[j] < numeros[indiceMenor]) {
+                    indiceMenor = j;
+                }
+            }
+            int temp =numeros[indiceMenor];
+            numeros[indiceMenor] = numeros[i];
+            numeros[i] = temp;
+        }
+        System.out.print("Vetor ordenado ");
         imprimirArray(numeros);
 
         scanner.close();
