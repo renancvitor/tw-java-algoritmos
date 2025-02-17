@@ -19,24 +19,28 @@ public class Main {
             numeros[i] = numero;
         }
 
-        System.out.println("**Busca linear**");
-        System.out.print("Digite o número a ser digitado: ");
-        int alvo = scanner.nextInt();
-        int posicaoResultado = -1;
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] == alvo) {
-                posicaoResultado = i;
-                break;
-            }
-        }
-        if (posicaoResultado < 0) {
-            System.out.println("Elemento não foi encontrado.");
-        } else {
-            System.out.println(String.format("O número %d foi encontrado na posição %d", alvo, posicaoResultado));
-        }
+        // Busca Linear
+//        System.out.println("**Busca linear**");
+//        System.out.print("Digite o número a ser digitado: ");
+//        int alvo = scanner.nextInt();
+//        int posicaoResultado = -1;
+//        for (int i = 0; i < numeros.length; i++) {
+//            if (numeros[i] == alvo) {
+//                posicaoResultado = i;
+//                break;
+//            }
+//        }
+//        if (posicaoResultado < 0) {
+//            System.out.println("Elemento não foi encontrado.");
+//        } else {
+//            System.out.println(String.format("O número %d foi encontrado na posição %d", alvo, posicaoResultado));
+//        }
+        // FIm Busca Linear
+
         System.out.println("Vetor: ");
         imprimirArray(numeros);
 
+        // Selection Sort
         for (int i = 0; i < numeros.length; i++) {
             int indiceMenor = i;
             for (int j = i + 1; j < numeros.length; j++) {
@@ -48,8 +52,38 @@ public class Main {
             numeros[indiceMenor] = numeros[i];
             numeros[i] = temp;
         }
-        System.out.print("Vetor ordenado ");
+        // Fim Selection Sort
+
+        System.out.println("Vetor ordenado ");
         imprimirArray(numeros);
+
+        // Busca Binária
+        int resultado = -1;
+        int inicio = 0;
+        int fim = numeros.length - 1;
+        int meio = 0;
+
+        System.out.println("Digite o elemento a ser encontrado: ");
+        int alvo = scanner.nextInt();
+
+        while (inicio <= fim) {
+            meio = (inicio + fim) / 2;
+            if (numeros[meio] < alvo) {
+                inicio = meio + 1;
+            } else if (numeros[meio] > alvo) {
+                fim = meio -1;
+            } else if (numeros[meio] == alvo) {
+                resultado = meio;
+                break;
+            }
+        }
+
+        if (resultado < 0) {
+            System.out.println("Elemento não foi encontrado");
+        } else {
+            System.out.println(String.format("O número %d está na posição %d", alvo, resultado));
+        }
+        // Fim Busca Binária
 
         scanner.close();
     }
